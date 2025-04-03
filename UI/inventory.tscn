@@ -1,0 +1,186 @@
+[gd_scene load_steps=4 format=3 uid="uid://curxydwlp6f7x"]
+
+[ext_resource type="Script" uid="uid://c74xqtcyw3b2x" path="res://UI/inventory.gd" id="1_7g8kd"]
+[ext_resource type="PackedScene" uid="uid://b4q5twicqxuku" path="res://UI/description_ui.tscn" id="1_23vm5"]
+[ext_resource type="Script" uid="uid://dm7rr4xrr0ulx" path="res://UI/inventory_slot.gd" id="2_fxcd2"]
+
+[node name="Inventory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7g8kd")
+metadata/_edit_use_anchors_ = true
+
+[node name="Bg" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.261285
+anchor_top = 0.243056
+anchor_right = 0.738715
+anchor_bottom = 0.756944
+offset_bottom = 3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.154876, 0.154876, 0.154876, 0.580392)
+metadata/_edit_use_anchors_ = true
+
+[node name="Contents" type="GridContainer" parent="Bg"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0363636
+anchor_top = 0.172673
+anchor_right = 0.536364
+anchor_bottom = 0.572072
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+columns = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="Bg/Contents"]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+focus_neighbor_right = NodePath("../Panel2")
+focus_neighbor_bottom = NodePath("../Panel5")
+focus_mode = 2
+script = ExtResource("2_fxcd2")
+
+[node name="Panel2" type="Panel" parent="Bg/Contents"]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+focus_neighbor_left = NodePath("../Panel")
+focus_neighbor_right = NodePath("../Panel3")
+focus_neighbor_bottom = NodePath("../Panel6")
+focus_mode = 2
+script = ExtResource("2_fxcd2")
+
+[node name="Panel3" type="Panel" parent="Bg/Contents"]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+focus_neighbor_left = NodePath("../Panel2")
+focus_neighbor_right = NodePath("../Panel4")
+focus_neighbor_bottom = NodePath("../Panel7")
+focus_mode = 2
+script = ExtResource("2_fxcd2")
+
+[node name="Panel4" type="Panel" parent="Bg/Contents"]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+focus_neighbor_left = NodePath("../Panel3")
+focus_neighbor_bottom = NodePath("../Panel8")
+focus_mode = 2
+script = ExtResource("2_fxcd2")
+
+[node name="Panel5" type="Panel" parent="Bg/Contents"]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Panel")
+focus_neighbor_right = NodePath("../Panel6")
+focus_neighbor_bottom = NodePath("../../EquippedItem")
+focus_mode = 2
+script = ExtResource("2_fxcd2")
+
+[node name="Panel6" type="Panel" parent="Bg/Contents"]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+focus_neighbor_left = NodePath("../Panel5")
+focus_neighbor_top = NodePath("../Panel2")
+focus_neighbor_right = NodePath("../Panel7")
+focus_neighbor_bottom = NodePath("../../EquippedItem")
+focus_mode = 2
+script = ExtResource("2_fxcd2")
+
+[node name="Panel7" type="Panel" parent="Bg/Contents"]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+focus_neighbor_left = NodePath("../Panel6")
+focus_neighbor_top = NodePath("../Panel3")
+focus_neighbor_right = NodePath("../Panel8")
+focus_neighbor_bottom = NodePath("../../EquippedItem")
+focus_mode = 2
+script = ExtResource("2_fxcd2")
+
+[node name="Panel8" type="Panel" parent="Bg/Contents"]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+focus_neighbor_left = NodePath("../Panel7")
+focus_neighbor_top = NodePath("../Panel4")
+focus_neighbor_bottom = NodePath("../../EquippedItem")
+focus_mode = 2
+script = ExtResource("2_fxcd2")
+
+[node name="EquippedItem" type="Panel" parent="Bg"]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+anchor_left = 0.0363636
+anchor_top = 0.677177
+anchor_right = 0.152727
+anchor_bottom = 0.869369
+focus_neighbor_top = NodePath("../Contents/Panel5")
+focus_mode = 2
+script = ExtResource("2_fxcd2")
+metadata/_edit_use_anchors_ = true
+
+[node name="InventoryLabel" type="Label" parent="Bg"]
+layout_mode = 0
+anchor_left = 0.0254545
+anchor_top = 0.0285285
+anchor_right = 0.161818
+anchor_bottom = 0.0975976
+text = "Inventory"
+metadata/_edit_use_anchors_ = true
+
+[node name="InventoryLabel2" type="Label" parent="Bg"]
+layout_mode = 0
+anchor_left = 0.0272727
+anchor_top = 0.605105
+anchor_right = 0.163636
+anchor_bottom = 0.674174
+text = "Equipped"
+metadata/_edit_use_anchors_ = true
+
+[node name="Description" parent="Bg" instance=ExtResource("1_23vm5")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.607273
+anchor_top = 0.0705706
+anchor_right = 0.972727
+anchor_bottom = 0.677177
+offset_left = 0.0
+offset_top = -1.90735e-06
+offset_right = 0.0
+offset_bottom = 0.0
+metadata/_edit_use_anchors_ = true
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="focus_entered" from="Bg/Contents/Panel" to="Bg/Contents/Panel" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Bg/Contents/Panel" to="Bg/Contents/Panel" method="_on_focus_exited"]
+[connection signal="focus_entered" from="Bg/Contents/Panel2" to="Bg/Contents/Panel2" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Bg/Contents/Panel2" to="Bg/Contents/Panel2" method="_on_focus_exited"]
+[connection signal="focus_entered" from="Bg/Contents/Panel3" to="Bg/Contents/Panel3" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Bg/Contents/Panel3" to="Bg/Contents/Panel3" method="_on_focus_exited"]
+[connection signal="focus_entered" from="Bg/Contents/Panel4" to="Bg/Contents/Panel4" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Bg/Contents/Panel4" to="Bg/Contents/Panel4" method="_on_focus_exited"]
+[connection signal="focus_entered" from="Bg/Contents/Panel5" to="Bg/Contents/Panel5" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Bg/Contents/Panel5" to="Bg/Contents/Panel5" method="_on_focus_exited"]
+[connection signal="focus_entered" from="Bg/Contents/Panel6" to="Bg/Contents/Panel6" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Bg/Contents/Panel6" to="Bg/Contents/Panel6" method="_on_focus_exited"]
+[connection signal="focus_entered" from="Bg/Contents/Panel7" to="Bg/Contents/Panel7" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Bg/Contents/Panel7" to="Bg/Contents/Panel7" method="_on_focus_exited"]
+[connection signal="focus_entered" from="Bg/Contents/Panel8" to="Bg/Contents/Panel8" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Bg/Contents/Panel8" to="Bg/Contents/Panel8" method="_on_focus_exited"]
+[connection signal="focus_entered" from="Bg/EquippedItem" to="Bg/EquippedItem" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Bg/EquippedItem" to="Bg/EquippedItem" method="_on_focus_exited"]

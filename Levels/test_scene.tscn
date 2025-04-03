@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://boerjgvxd05nh"]
+
+[ext_resource type="PackedScene" uid="uid://dap65iav6yft4" path="res://Characters/Player/player.tscn" id="1_abhxl"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_abhxl"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_g54tn"]
+sky_material = SubResource("ProceduralSkyMaterial_abhxl")
+
+[sub_resource type="Environment" id="Environment_dc6q1"]
+background_mode = 2
+sky = SubResource("Sky_g54tn")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_vwa3x"]
+size = Vector3(30, 1, 30)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_abhxl"]
+data = PackedVector3Array(-15, 0.5, 15, 15, 0.5, 15, -15, -0.5, 15, 15, 0.5, 15, 15, -0.5, 15, -15, -0.5, 15, 15, 0.5, -15, -15, 0.5, -15, 15, -0.5, -15, -15, 0.5, -15, -15, -0.5, -15, 15, -0.5, -15, 15, 0.5, 15, 15, 0.5, -15, 15, -0.5, 15, 15, 0.5, -15, 15, -0.5, -15, 15, -0.5, 15, -15, 0.5, -15, -15, 0.5, 15, -15, -0.5, -15, -15, 0.5, 15, -15, -0.5, 15, -15, -0.5, -15, 15, 0.5, 15, -15, 0.5, 15, 15, 0.5, -15, -15, 0.5, 15, -15, 0.5, -15, 15, 0.5, -15, -15, -0.5, 15, 15, -0.5, 15, -15, -0.5, -15, 15, -0.5, 15, 15, -0.5, -15, -15, -0.5, -15)
+
+[sub_resource type="BoxMesh" id="BoxMesh_abhxl"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_g54tn"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[node name="TestScene" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_dc6q1")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Baseplate" type="Node3D" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Baseplate"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Baseplate/StaticBody3D"]
+mesh = SubResource("BoxMesh_vwa3x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baseplate/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_abhxl")
+
+[node name="Box" type="StaticBody3D" parent="Baseplate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.62816, 1.00955, -0.345289)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Baseplate/Box"]
+mesh = SubResource("BoxMesh_abhxl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baseplate/Box"]
+shape = SubResource("ConcavePolygonShape3D_g54tn")
+
+[node name="Player" parent="." instance=ExtResource("1_abhxl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0817867, 2.01467, 0.208385)
