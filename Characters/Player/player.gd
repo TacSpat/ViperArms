@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+signal set_equipped
+
 @onready var camera = $Camera3D
 
 const SPEED = 4.0

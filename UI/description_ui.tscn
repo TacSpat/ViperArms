@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://b4q5twicqxuku"]
+[gd_scene load_steps=2 format=3 uid="uid://b4q5twicqxuku"]
+
+[ext_resource type="Script" uid="uid://by3cftywnfwan" path="res://UI/description_ui.gd" id="1_2r175"]
 
 [node name="Description" type="ColorRect"]
 offset_left = 334.0
@@ -6,3 +8,28 @@ offset_top = 23.0
 offset_right = 535.0
 offset_bottom = 225.0
 color = Color(0.384314, 0.384314, 0.384314, 0.270588)
+script = ExtResource("1_2r175")
+
+[node name="ItemName" type="Label" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_right = 197.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 15
+text = "NAME"
+vertical_alignment = 1
+clip_text = true
+
+[node name="ItemDescription" type="Label" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 4.0
+offset_top = 23.0
+offset_right = 195.0
+offset_bottom = 198.0
+theme_override_font_sizes/font_size = 13
+text = "LIKE SUBSCRIBE AND HIT THAT NOTIFICATION BELL!!!
+LINK IN BIO
+CHECK OUT MY OTHER GAMES :)"
+autowrap_mode = 3
+clip_text = true
